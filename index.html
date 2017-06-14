@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" href="./lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
+   	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+	<div ng-app="2cozy">
+		<div ng-include="'partials/navbar.html'"></div>
+
+		<!-- ID on this div to position below fixed-nav and adjust as needed -->
+		<div ng-view id="main-content">
+<!-- anything in the routes in app.js will be shown with ng view -->
+		</div>
+		<!-- <div ng-include="'partials/footer.html'"></div> -->
+
+	</div>
+
+<script type="text/javascript" src="./lib/node_modules/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="./lib/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="./lib/node_modules/angular/angular.min.js"></script>
+<script type="text/javascript" src="./lib/node_modules/angular-route/angular-route.min.js"></script>
+<script type="text/javascript" src="./lib/node_modules/firebase/firebase.js"></script>
+
+<script type="text/javascript" src="./app/app.js"></script>
+<script type="text/javascript" src="app/values/fb-creds.js"></script>
+
+<!--Factories-->
+<script type="text/javascript" src="./app/factories/authFactory.js"></script>
+<script type="text/javascript" src="./app/factories/dataFactory.js"></script>
+
+<!--Controllers-->
+<script type="text/javascript" src="./app/controllers/navCtrl.js"></script>
+<script type="text/javascript" src="./app/controllers/authCtrl.js"></script>
+
+</body>
+</html>
