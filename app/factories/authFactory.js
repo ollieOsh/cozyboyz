@@ -7,6 +7,7 @@ let currentUser = null,
 
 
     let createUser = function(userObj){
+        console.log(userObj);
         return firebase.auth().createUserWithEmailAndPassword(userObj.email, userObj.password)
         .catch( function(error){
             let errorCode = error.code;
@@ -34,7 +35,7 @@ let currentUser = null,
     let isAuthenticated = function (){
         console.log("authFactory: isAuthenticated");
         return new Promise ( (resolve, reject) => {
-            firebase.auth().onAuthStateChanged( (user) => {
+            firebase.auth().onAuthStateChanged((user) => {
                 if (user){
                     currentUser = user.uid;
                     currentUserName = user.displayName;

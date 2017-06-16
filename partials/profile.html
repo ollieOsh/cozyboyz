@@ -1,0 +1,22 @@
+<br>
+<br>
+<br>
+<form class="container">
+	<div class="form-group col-sm-4 col-sm-offset-4">
+		<label for="username"><h4>Username:</h4></label>
+		<input id="username" type="text" class="form-control" ng-model="userObj.name">
+	</div>
+	<div class="col-sm-4 col-sm-offset-4">
+		<h4>Personality Type:</h4>
+		<p ng-model="userObj.personality"></p>
+		<p id="disclaimer">*if you're unsatisfied with the results, you can retake the quiz at any time. But be warned, this will delete all movie data/preferences associated with the account</p>
+	</div>
+
+	<div class="checkbox col-sm-4 col-sm-offset-4">
+    	<label>
+			<input type="checkbox" ng-model="userObj.private" ng-change="changePrivate(userObj.uid, userObj.private)"> Private
+		</label>
+  </div>
+	<button class="btn btn-primary col-sm-1 col-sm-offset-4" ng-click="editUser()">Save</button>
+	<button class="btn col-sm-2 col-sm-offset-1">Personality Quiz!</button>
+</form>

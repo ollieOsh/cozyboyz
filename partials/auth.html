@@ -1,0 +1,21 @@
+<div class="container container--auth">
+  <div class="col-xs-6">
+    <h4>Login with Google</h4>
+    <button class="btn btn-info" ng-click="loginGoogle()">Sign In</button>
+  </div>
+  <div class="col-xs-6 text-right">
+    <section class="auth-form">
+      <h4>Login/Register with Email</h4>
+      <div>
+        Email: <input type="email" autofocus="true" ng-model="account.email">
+      </div>
+      <div>
+        Password: <input type="password" ng-model="account.password">
+      </div>
+      <div>
+        <button class="btn btn-info" ng-click="login()">Login</button>
+        <button ng-click="register()" class="btn btn-default">Register</button>
+      </div>
+    </section>
+  </div>
+</div>

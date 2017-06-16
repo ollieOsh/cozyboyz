@@ -19,8 +19,20 @@ const app = angular.module("2cozy", ["ngRoute"]);
 app.config(($routeProvider) => {
 	$routeProvider
 	.when('/', {
-		// templateUrl: '',
-		// controller: ''
+		templateUrl: 'partials/auth.html',
+		controller: "AuthCtrl"
+	})
+	.when('/logout', {
+		templateUrl: 'partials/auth.html',
+		controller: "AuthCtrl"
+	})
+	.when('/:profile', {
+		templateUrl: 'partials/profile.html',
+		controller: "ProfileCtrl"
+	})
+	.when('/:profile/mood', {
+		templateUrl: 'partials/mood.html',
+		controller: "MoodCtrl"
 	})
 	.otherwise('/');
 });
