@@ -8,8 +8,8 @@
 	</div>
 	<div class="col-sm-4 col-sm-offset-4">
 		<h4>Personality Type:</h4>
-		<p ng-model="userObj.personality"></p>
-		<p id="disclaimer">*if you're unsatisfied with the results, you can retake the quiz at any time. But be warned, this will delete all movie data/preferences associated with the account</p>
+		<h4 ng-model="userObj.personality" id="userPersonality"><i>* {{userObj.personality}} *</i></h4>
+		<!-- <p id="disclaimer">*if you're unsatisfied with the results, you can retake the quiz at any time. But be warned, this will delete all movie data/preferences associated with the account</p> -->
 	</div>
 
 	<div class="checkbox col-sm-4 col-sm-offset-4">
@@ -18,5 +18,30 @@
 		</label>
   </div>
 	<button class="btn btn-primary col-sm-1 col-sm-offset-4" ng-click="editUser()">Save</button>
-	<button class="btn col-sm-2 col-sm-offset-1">Personality Quiz!</button>
+	<button class="btn col-sm-2 col-sm-offset-1" data-toggle="modal" data-target="#traitify">Personality Quiz!</button>
 </form>
+
+<!-- Modal -->
+
+<div class="modal fade" id="traitify" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" ng-controller="TraitifyCtrl">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">What's Your Movie Personality?</h4>
+      </div>
+
+      <div class="modal-body">
+     	<div class="slide-deck"></div>
+		<div class="results"></div>
+		<div class="personality-types"></div>
+		<div class="personality-traits"></div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="save()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

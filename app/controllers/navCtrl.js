@@ -3,7 +3,7 @@
 app.controller("NavCtrl", function ($scope, $location, DataFactory, AuthFactory) {
 	console.log("~ NavCtrl yay! ~");
 
-	let userObj = {
+	$scope.userObj = {
 		mood: "",
 		name: "",
 		private: false,
@@ -19,11 +19,11 @@ app.controller("NavCtrl", function ($scope, $location, DataFactory, AuthFactory)
 			console.log("somebody done logged in", user);
 			if(user.displayName) {
 				console.log("USER", user);
-				userObj.name = user.displayName;
+				$scope.userObj.name = user.displayName;
 			}else {
-				userObj.name = "Stranger";
+				$scope.userObj.name = "Stranger";
 			}
-			userObj.uid = user.uid;
+			$scope.userObj.uid = user.uid;
 
 			DataFactory.getUser(user.uid)
 			.then((response) => {
@@ -31,11 +31,11 @@ app.controller("NavCtrl", function ($scope, $location, DataFactory, AuthFactory)
 
 				if(response.data) {
 					console.log("fuckin ayyyy. welcome back brew");
-					userObj = response.data;
-					$location.path("/fuckhole");
+					$scope.userObj = response.data;
+					$location.path($scope.userObj.name + "/mood");
 				}else {
-					DataFactory.addUser(user.uid, userObj);
-					$location.path('/profile');
+					DataFactory.addUser(user.uid, $scope.userObj);
+					$location.path($scope.userObj.name);
 				}
 			});
 
@@ -46,7 +46,7 @@ app.controller("NavCtrl", function ($scope, $location, DataFactory, AuthFactory)
 		}
 	});
 
-	$scope.go = () => {
-		$location.url(`${userObj.name}`);
-	};
+	// $scope.go = () => {
+	// 	$location.url(`${userObj.name}`);
+	// };
 });

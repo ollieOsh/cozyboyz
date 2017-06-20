@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" ng-href="#!/{profile}">2comfy2cozy</a>
+      <a class="navbar-brand" ng-href="#!/">2comfy2cozy</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -22,8 +22,8 @@
         <button type="reset" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a ng-show="isLoggedIn" ng-href="" ng-click="go()">Profile</a></li>
-        <li><a ng-href="#!/">Mood</a></li>
+        <li><a ng-show="isLoggedIn" ng-href="#!/{{userObj.name}}">Profile</a></li>
+        <li><a ng-href="#!/{{userObj.name}}/mood" ng-show="isLoggedIn">Mood</a></li>
         <!-- <li><a ng-href="#!/login" ng-show="!isLoggedIn" ng-controller="AuthCtrl" ng-click="loginGoogle()">Login</a></li> -->
         <li><a ng-show="isLoggedIn" ng-controller="AuthCtrl" ng-href="#!/logout" ng-click="logout()">Logout</a></li>
       </ul>

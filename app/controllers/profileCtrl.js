@@ -18,6 +18,9 @@ app.controller("ProfileCtrl", function($scope, DataFactory, AuthFactory) {
 	DataFactory.getUser(user)
 	.then((results) => {
 		$scope.userObj = results.data;
+		if(results.data.personality === ""){
+			$scope.userObj.personality = "*Take the Personality Quiz Below!*";
+		}
 		console.log($scope.userObj);
 	});
 

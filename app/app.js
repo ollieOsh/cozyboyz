@@ -1,6 +1,6 @@
 "use strict";
 
-const app = angular.module("2cozy", ["ngRoute"]);
+const app = angular.module("2cozy", ["ngRoute", "ui.bootstrap"]);
 
 // let isAuth = (AuthFactory, $location) => new Promise ((resolve, reject) => {
 // 	authFactory.isAuthenticated()
