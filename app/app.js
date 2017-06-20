@@ -34,6 +34,10 @@ app.config(($routeProvider) => {
 		templateUrl: 'partials/mood.html',
 		controller: "MoodCtrl"
 	})
+	.when('/:profile/edit', {
+		templateUrl: 'partials/profile-edit.html',
+		controller: "EditProfileCtrl"
+	})
 	.otherwise('/');
 });
 

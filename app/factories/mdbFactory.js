@@ -28,7 +28,7 @@ app.factory("MDBFactory", function($q, $http, AuthFactory, MDBCreds) {
 	const getMovies = (withGenre, withoutGenre, indie) => {
 		return $q((resolve, reject) => {
 			console.log(MDBCreds.searchURL + withGenre + withoutGenre);
-			$http.get(`${MDBCreds.searchURL}${withGenre}${withoutGenre}`)
+			$http.get(`${MDBCreds.searchURL}${withGenre}${withoutGenre}${indie}`)
 			.then((data) => {
 				console.log(data.data);
 			});

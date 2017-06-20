@@ -35,7 +35,7 @@ app.controller("NavCtrl", function ($scope, $location, DataFactory, AuthFactory)
 					$location.path($scope.userObj.name + "/mood");
 				}else {
 					DataFactory.addUser(user.uid, $scope.userObj);
-					$location.path($scope.userObj.name);
+					$location.path($scope.userObj.name + '/edit');
 				}
 			});
 

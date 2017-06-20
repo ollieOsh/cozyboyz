@@ -60,6 +60,9 @@ app.controller("MoodCtrl", function(MDBFactory, AuthFactory, DataFactory, $scope
 
 	$scope.getRecs = () => {
 		let currentMood = $("input[name='appy']:checked").val();
+		if(indie) {
+			indie = "&vote_count.lte=2500&vote_average.gte=7";
+		}
 		MDBFactory.getMovies(withGenre, withoutGenre, indie);
 		console.log(moods[currentMood]);
 	};

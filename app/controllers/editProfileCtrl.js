@@ -1,7 +1,7 @@
 "use strict";
 
-app.controller("ProfileCtrl", function($scope, DataFactory, AuthFactory) {
-	console.log("~ ProfileCtrl Yay! ~");
+app.controller("EditProfileCtrl", function($scope, DataFactory, AuthFactory) {
+	console.log("~ EditProfileCtrl Yay! ~");
 
 	let user = AuthFactory.getUser();
 
