@@ -6,7 +6,18 @@ app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory){
 
 	let user = AuthFactory.getUser();
 
-	const addToWatchList = () => {};
+	const addToWatchList = (movie) => {
+		console.log("adding movie to fb");
+		return $q((resolve, reject) => {
+			$http.post(`${FBCreds.databaseURL}/movies.json`, JSON.stringify(movie))
+			.then((movie) => {
+				resolve(movie);
+			})
+			.catch((error) => {
+				reject(error);
+			});
+		});
+	};
 
 	const addToWatched = () => {};
 
@@ -41,7 +52,26 @@ app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory){
 	};
 
 
-	const getUserMovies = () => {};
+	const getUserMovies = (user) => {
+		console.log("getting users movies");
+		let movies = [];
+		return $q((resolve, reject) => {
+			$http.get(`${FBCreds.databaseURL}/movies.json?orderBy="uid"&equalTo="${user}"`)
+			.then((userMovies) => {
+				if(userMovies.data) {
+					let movieCollection = userMovies.data;
+					Object.keys(movieCollection).forEach((key) => {
+						movieCollection[key].fb = key;
+						movies.push(movieCollection[key]);
+					});
+				}
+				resolve(movies);
+			})
+			.catch((error) => {
+				reject(error);
+			});
+		});
+	};
 
 	const getUserName = () => {};
 
@@ -58,5 +88,5 @@ app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory){
 		});
 	};
 
-	return {addToWatchList, addToWatched, rateMovie, removeMovie, addUser, getUser, getUserName, editUser};
+	return {addToWatchList, addToWatched, rateMovie, removeMovie, addUser, getUser, getUserMovies, editUser};
 });

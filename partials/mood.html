@@ -1,7 +1,7 @@
 <br>
 <div class="container">
 	<form id="currentMood">
-		<h3>What Kinda Mood Are You In {{userObj.name}}?</h3>
+		<h3>What Kinda Mood Are You In, {{userObj.name}}?</h3>
 		<p>*Leave any/everything blank if you want 😊</p>
 
 		<div class="form-group">
@@ -26,63 +26,63 @@
 		<div class="form-group">
 			<h4>How You Feelin?</h4>
 			<div class="radio">
-				<label><input type="radio" name="moji" value="ded">&#9760;</label>
+				<label><input class="emoji" type="radio" name="moji" value="ded">&#9760;</label>
 			</div>
 			<div class="radio">
-				<label><input type="radio" name="moji" value="smiley">😁</label>
+				<label><input class="emoji" type="radio" name="moji" value="smiley">😁</label>
 			</div>
 			<div class="radio">
-				<label><input type="radio" name="moji" value="cheeky">😏</label>
+				<label><input class="emoji" type="radio" name="moji" value="cheeky">😏</label>
 			</div>
 			<div class="radio">
-				<label><input type="radio" name="moji" value="devily">😈</label>
+				<label><input class="emoji" type="radio" name="moji" value="devily">😈</label>
 			</div>
 			<div class="radio">
-				<label><input type="radio" name="moji" value="fucky">😑</label>
+				<label><input class="emoji" type="radio" name="moji" value="fucky">😑</label>
 			</div>
 			<div class="radio">
-				<label><input type="radio" name="moji" value="nerdy">🤓</label>
+				<label><input class="emoji" type="radio" name="moji" value="nerdy">🤓</label>
 			</div>
 			<div class="radio">
-				<label><input type="radio" name="moji" value="nerdy">😝</label>
+				<label><input class="emoji" type="radio" name="moji" value="nerdy">😝</label>
 			</div>
 		</div>
 
 		<div class="form-group">
 			<h4>How You Wanna Feel?</h4>
 			<div class="radio">
-				<label><input type="radio" name="moji" value="wowed">😲</label>
+				<label><input class="emoji" type="radio" name="moji" value="wowed">😲</label>
 			</div>
 			<div class="radio">
-				<label><input type="radio" name="moji" value="wondering">🤔</label>
+				<label><input class="emoji" type="radio" name="moji" value="wondering">🤔</label>
 			</div>
 			<div class="radio">
-				<label><input type="radio" name="moji" value="warm">🤗</label>
+				<label><input class="emoji" type="radio" name="moji" value="warm">🤗</label>
 			</div>
 			<div class="radio">
-				<label><input type="radio" name="moji" value="lovey">😍</label>
+				<label><input class="emoji" type="radio" name="moji" value="lovey">😍</label>
 			</div>
 			<div class="radio">
-				<label><input type="radio" name="moji" value="devily">😈</label>
+				<label><input class="emoji" type="radio" name="moji" value="devily">😈</label>
 			</div>
 			<div class="radio">
-				<label><input type="radio" name="moji" value="sad">😢</label>
+				<label><input class="emoji" type="radio" name="moji" value="sad">😢</label>
 			</div>
 			<div class="radio">
-				<label><input type="radio" name="moji" value="sad">😢</label>
+				<label><input class="emoji" type="radio" name="moji" value="sad">😢</label>
 			</div>
 		</div>
 
 		<div class="form-group">
 			<h4>I Kinda Wanna See Some...</h4>
 			<div class="radio">
-				<label><input type="checkbox" name="wanna" value="cowboy">🤠</label>
+				<label><input class="emoji" type="checkbox" name="wanna" value="cowboy" id="cowboy"> 🤠</label>
 			</div>
 			<div class="radio">
-				<label><input type="checkbox" name="wanna" value="alien">👽</label>
+				<label><input class="emoji" type="checkbox" name="wanna" value="alien" id="alien"> 👽</label>
 			</div>
 			<div class="radio">
-				<label><input type="checkbox" name="wanna" value="punch">👊</label>
+				<label><input class="emoji" type="checkbox" name="wanna" value="punch" id="punch"> 👊</label>
 			</div>
 		</div>
 
@@ -101,9 +101,48 @@
 
 		<div class="form-group">
 			<div class="checkbox">
-				<label><input type="checkbox" name="toons" value="yes"><strong>Family-Friendly</strong></label>
+				<label><input type="checkbox" ng-model="safe" value="yes"><strong>Family-Friendly</strong></label>
 			</div>
 		</div>
 	</form>
-	<button class="btn" ng-click="getRecs()">View Recs</button>
+	<button class="btn" data-toggle="modal" data-target="#recs" ng-click="getRecs()">View Recs</button>
+</div>
+
+<!-- Modal -->
+
+<div class="modal fade" id="recs" tabindex="-1" role="dialog" aria-labelledby="chingy">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="chingy">Picks </h4>
+      </div>
+
+      <div class="modal-body">
+      	<div class="row">
+	     	<div class="col-xs-3" ng-repeat="movie in movies | limitTo: 4">
+	     		<div class="thumbnail" id="{{movie.id}}">
+		     		<a href="" ng-click="more(movie.id)"><img src="{{movie.poster_path}}"></a>
+		     		<div class="caption">
+		     			<a href="" ng-click="more(movie.id)"><h4 class="movieTitle">{{movie.title}}</h4></a>
+		     			<a  href="https://www.netflix.com/search?q={{movie.title}}" target="_blank"><button type="button" class="btn btn-primary">Watch Now</button></a>
+		     			<button type="button" class="btn btn-default" ng-click="addToWatchlist($event)">Save</button>
+		     			<br>
+		     			<br>
+		     			<label><input type="checkbox" class="watched" ng-model="isWatched" ng-change="watchedIt(isWatched)"> Watched</label>
+		     			<label><input type="checkbox" class="watched" ng-model="noShow" ng-change="show(noShow)"> Don't Show Again</label>
+		     			<br>
+		     			<p class="movieDescription hidden">{{movie.overview}}
+		     		</div>
+		     	</div>
+	     	</div>
+	      </div>
+	    </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="save()">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
