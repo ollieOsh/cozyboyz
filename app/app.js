@@ -2,19 +2,19 @@
 
 const app = angular.module("2cozy", ["ngRoute", "ui.bootstrap"]);
 
-// let isAuth = (AuthFactory, $location) => new Promise ((resolve, reject) => {
-// 	authFactory.isAuthenticated()
-// 	.then((user) => {
-// 		if(user) {
-// 			console.log("u made it!");
-// 			resolve();
-// 		}else {
-// 			console.log("REEEEEEJECTED!");
-// 			reject();
-// 			$location.path('/');
-// 		}
-// 	});
-// });
+let isAuth = (AuthFactory, $location) => new Promise ((resolve, reject) => {
+	AuthFactory.isAuthenticated()
+	.then((user) => {
+		if(user) {
+			console.log("u made it!");
+			resolve();
+		}else {
+			console.log("REEEEEEJECTED!");
+			reject();
+			$location.path('/');
+		}
+	});
+});
 
 app.config(($routeProvider) => {
 	$routeProvider
@@ -28,15 +28,18 @@ app.config(($routeProvider) => {
 	})
 	.when('/:profile', {
 		templateUrl: 'partials/profile.html',
-		controller: "ProfileCtrl"
+		controller: "ProfileCtrl",
+		resolve: {isAuth}
 	})
 	.when('/:profile/mood', {
 		templateUrl: 'partials/mood.html',
-		controller: "MoodCtrl"
+		controller: "MoodCtrl",
+		resolve: {isAuth}
 	})
 	.when('/:profile/edit', {
 		templateUrl: 'partials/profile-edit.html',
-		controller: "EditProfileCtrl"
+		controller: "EditProfileCtrl",
+		resolve: {isAuth}
 	})
 	.otherwise('/');
 });

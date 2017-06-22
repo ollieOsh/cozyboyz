@@ -16,7 +16,7 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 			"​Romantic": "10749",
 			"​StuntDouble": "28"
 		},
-		moods = {
+		appy = {
 			happy: 1,
 			crappy: 2,
 			sappy: 3,
@@ -28,6 +28,7 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 		indie = false,
 		isWatched = false,
 		noShow = false,
+		safe = false,
 		currentMood = "";
 
 	DataFactory.getUser(user)
@@ -61,6 +62,15 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 				console.log(indie);
 	});
 
+
+	$scope.safeSearch = (safe) => {
+		console.log("safeSearch", safe);
+		if(safe) {
+			withGenre += "10751";
+			console.log(withGenre);
+		}
+	};
+
 	$scope.watchedIt = (watched) => {
 		isWatched = watched;
 		console.log(isWatched);
@@ -70,6 +80,10 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 		noShow = nah;
 		console.log(noShow);
 	};
+
+	// $scope.edit = (movieID, obj) => {
+
+	// };
 
 	$scope.getRecs = () => {
 		$scope.movies = [];
@@ -94,9 +108,10 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 				console.log("userMovies", $scope.userMovies, $scope.movies);
 				for(let i = 0; i < $scope.movies.length; i++) {
 					for(let j = 0; j < $scope.userMovies.length; j++){
-						if($scope.userMovies[j].id == $scope.movies[i].id) {
-							console.log("OYYY");
+						if($scope.userMovies[j].id == $scope.movies[i].id || $scope.userMovies[j].title == $scope.movies[i].title) {
+							console.log("OYYY", $scope.movies[i]);
 							$scope.movies.splice(i, 1);
+							i = 0;
 						}
 					}
 				}
@@ -118,7 +133,7 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 			poster_path: event.currentTarget.offsetParent.childNodes[1].children[0].firstElementChild.currentSrc,
 			id: event.currentTarget.offsetParent.firstElementChild.id,
 			uid: user,
-			overview: event.target.parentElement.childNodes[15].innerHTML,
+			overview: event.target.parentElement.lastElementChild.innerHTML,
 			mood: "",
 			watched: isWatched,
 			noShow: noShow,
@@ -129,9 +144,12 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 
 	$scope.addToWatchlist = (event) => {
 		console.log($scope.buildObject(event));
-		DataFactory.addToWatchList($scope.buildObject(event));
+		DataFactory.addToWatchList($scope.buildObject(event))
+		.then(() => {
+			$scope.getRecs();
+			isWatched = false;
+			noShow = false;
+		});
 	};
-
-	$scope.save = () => {};
 
 });
