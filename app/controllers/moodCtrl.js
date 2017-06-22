@@ -11,10 +11,12 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 		personality = {
 			"Believer": "14,878",
 			"Dramatic": "18",
+			"​Dramatic": "18",
 			"Indie": "18",
 			"Laughaholic": "35",
 			"NailBiter": "53,27",
 			"​Romantic": "10749",
+			"Romantic": "10749",
 			"​StuntDouble": "28"
 		},
 		appy = {
