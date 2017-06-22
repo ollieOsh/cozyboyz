@@ -1,10 +1,11 @@
 "use strict";
 
-app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFactory, $scope) {
+app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFactory, $scope, $routeParams) {
 	console.log("~ MoodCtrl Yay! ~");
 
 	$scope.userObj = {};
 	$scope.movies = [];
+	//$scope.username = $routeParams.profile;
 
 	let user = AuthFactory.getUser(),
 		personality = {

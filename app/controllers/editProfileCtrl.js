@@ -19,7 +19,7 @@ app.controller("EditProfileCtrl", function($scope, DataFactory, AuthFactory) {
 	.then((results) => {
 		$scope.userObj = results.data;
 		if(results.data.personality === ""){
-			$scope.userObj.personality = "*Take the Personality Quiz Below!*";
+			$scope.userObj.personality = "*Take the Personality Quiz!*";
 		}
 		console.log($scope.userObj);
 	});

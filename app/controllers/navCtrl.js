@@ -4,6 +4,7 @@ app.controller("NavCtrl", function ($scope, $location, DataFactory, AuthFactory)
 	console.log("~ NavCtrl yay! ~");
 
 	$scope.userObj = {
+		assessmentid: "",
 		mood: "",
 		name: "",
 		private: false,

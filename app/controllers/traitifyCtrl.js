@@ -43,5 +43,6 @@ app.controller('TraitifyCtrl', function(TraitifyCreds, $scope, DataFactory, Auth
 		});
 	};
 
+
 	$scope.quiz();
 });
