@@ -13,13 +13,13 @@ app.controller('TraitifyCtrl', function(TraitifyCreds, $scope, DataFactory, Auth
 		Traitify.setPublicKey(TraitifyCreds.publicKey);
 		Traitify.setHost("api-sandbox.traitify.com");
 		Traitify.setVersion("v1");
-
+		console.log("TraitifyCtrl", user);
 		DataFactory.getUser(user)
 			.then((obj) => {
 				$scope.obj = obj.data;
 				console.log("HIIIII", $scope.obj);
 			let assessmentId = $scope.obj.assessmentid;
-			console.log("this is it", $scope.obj.assessmentid);
+			console.log("this is it", $scope.obj.assessmentid, Traitify);
 
 			//Traitify.ui.load(assessmentId, '.assessment');
 			Traitify.ui.load(assessmentId, ".slide-deck", {

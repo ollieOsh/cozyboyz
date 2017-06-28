@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("NavCtrl", function ($scope, $location, DataFactory, AuthFactory) {
+app.controller("NavCtrl", function ($scope, $location, DataFactory, AuthFactory, TraitifyFactory) {
 	console.log("~ NavCtrl yay! ~");
 
 	$scope.userObj = {
@@ -35,8 +35,14 @@ app.controller("NavCtrl", function ($scope, $location, DataFactory, AuthFactory)
 					$scope.userObj = response.data;
 					$location.path($scope.userObj.name + "/mood");
 				}else {
-					DataFactory.addUser(user.uid, $scope.userObj);
-					$location.path($scope.userObj.name + '/edit');
+					TraitifyFactory.register()
+					.then((data) => {
+						$scope.userObj.assessmentid = data.data.id;
+					});
+					DataFactory.addUser(user.uid, $scope.userObj)
+					.then(() =>{
+						$location.path($scope.userObj.name + '/edit');
+					});
 				}
 			});
 

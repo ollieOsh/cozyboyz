@@ -75,21 +75,21 @@
 			<p>{{wanna}}</p>
 		</div>
 
-		<!-- <div class="form-group">
+		<div class="form-group">
 			<h4>I Kinda Want Some...</h4>
 			<div class="add">
-				<label><input class="emoji" type="checkbox" name="wanna" value="cowboy" ng-model="cowboy" ng-change="addGenre('37')"> 🤠</label>
+				<label><input class="emoji" type="checkbox" name="wanna" value="37" ng-model="cowboy" ng-change="addGenre(cowboy, '37')"> 🤠</label>
 			</div>
 			<div class="add">
-				<label><input class="emoji" type="checkbox" name="wanna" value="alien" ng-model="alien" ng-change="addGenre('878')"> 👽</label>
+				<label><input class="emoji" type="checkbox" name="wanna" value="878" ng-model="alien" ng-change="addGenre(alien, '878')"> 👽</label>
 			</div>
 			<div class="add">
-				<label><input class="emoji" type="checkbox" name="wanna" value="punch" ng-model="punch" ng-change="addGenre('28')"> 👊</label>
+				<label><input class="emoji" type="checkbox" name="wanna" value="28" ng-model="punch" ng-change="addGenre(punch, '28')"> 👊</label>
 			</div>
 			<div class="add">
-				<label><input class="emoji" type="checkbox" name="wanna" value="punch" id="punch" ng-change="addGenre('10402')"> 🎶</label>
+				<label><input class="emoji" type="checkbox" name="wanna" value="10402" id="music" ng-model="music" ng-change="addGenre(music, '10402')"> 🎶</label>
 			</div>
-		</div> -->
+		</div>
 
 		<div class="form-group">
 			<h4>Animated?</h4>
@@ -121,6 +121,14 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="chingy">Picks </h4>
+        <div class="wants">
+			<label><input class="emoji" type="checkbox" name="wanna" value="37" ng-model="cowboy" ng-change="addGenre(cowboy, '37')"> 🤠</label>
+
+			<label><input class="emoji" type="checkbox" name="wanna" value="878" ng-model="alien" ng-change="addGenre(alien, '878')"> 👽</label>
+
+			<label><input class="emoji" type="checkbox" name="wanna" value="28" ng-model="punch" ng-change="addGenre(punch, '28')"> 👊</label>
+
+			<label><input class="emoji" type="checkbox" name="wanna" value="10402" id="music" ng-model="music" ng-change="addGenre(music, '10402')"> 🎶 </label>
       </div>
 
       <div class="modal-body">

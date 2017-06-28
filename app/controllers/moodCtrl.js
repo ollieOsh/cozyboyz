@@ -14,6 +14,7 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 			"​Dramatic": "18",
 			"Indie": "18",
 			"Laughaholic": "35",
+			"​Laughaholic": "35",
 			"NailBiter": "53,27",
 			"​Romantic": "10749",
 			"Romantic": "10749",
@@ -32,7 +33,8 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 		isWatched = false,
 		noShow = false,
 		safe = false,
-		currentMood = "";
+		currentMood = "",
+		wanna = "";
 
 	DataFactory.getUser(user)
 	.then((userObj) => {
@@ -84,16 +86,27 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 		console.log(noShow);
 	};
 
-	// $scope.edit = (movieID, obj) => {
+	// $scope.addGenre = (genreID, val) => {
+	// 		if(genreID){
+	// 			console.log(genreID, val);
+	// 			if(withGenre.indexOf(val) > -1){
+	// 				withGenre += val + ',';
+	// 			}
 
+	// 		}else{
+	// 			wG = '';
+	// 		}
+	// 		console.log(wG);
 	// };
 
 	$scope.getRecs = () => {
 		$scope.movies = [];
 		currentMood = $("input[name='appy']:checked").val();
+		wanna = $("input[name='wanna']:checked").val();
 		if(indie) {
 			indie = "&vote_count.lte=2500&vote_average.gte=7";
 		}
+		console.log(currentMood, wanna);
 		MDBFactory.getMovies(withGenre, withoutGenre, indie)
 		.then((movieObj) => {
 			console.log(movieObj);
