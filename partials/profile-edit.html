@@ -18,7 +18,7 @@
 		</label>
   </div>
 	<a ng-href="#!/{{userObj.name}}"><button class="btn btn-primary col-sm-1 col-sm-offset-4" ng-click="editUser()">Save</button></a>
-	<button class="btn col-sm-2 col-sm-offset-1" data-toggle="modal" data-target="#traitify">Personality Quiz!</button>
+	<button class="btn col-sm-2 col-sm-offset-1" data-toggle="modal" data-target="#traitify" ng-controller="TraitifyCtrl" ng-click="quiz()">Personality Quiz!</button>
 </form>
 
 <!-- Modal -->

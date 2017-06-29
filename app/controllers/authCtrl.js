@@ -16,7 +16,7 @@ app.controller("AuthCtrl", function ($scope, AuthFactory, $window, $location) {
 		AuthFactory.logoutUser()
 		.then((data) => {
 			console.log("~Logged Out~", data);
-			$window.location.href = '#!/'; //so user can't press back and view stuff again
+			$window.location.url = '#!/'; //so user can't press back and view stuff again
 		}, (error) => {
 			console.log("error occurred on logut", error);
 		});

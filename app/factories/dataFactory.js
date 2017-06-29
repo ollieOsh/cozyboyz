@@ -39,7 +39,7 @@ app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory){
 	};
 
 	const getUser = (uid) => {
-		console.log("adding user to fb");
+		console.log("getting user from fb");
 		return $q((resolve, reject) => {
 			$http.get(`${FBCreds.databaseURL}/users/${uid}.json`)
 			.then((userData) => {

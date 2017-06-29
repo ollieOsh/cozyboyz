@@ -1,13 +1,18 @@
 "use strict";
 
-app.controller('TraitifyCtrl', function(TraitifyCreds, $scope, DataFactory, AuthFactory) {
+app.controller('TraitifyCtrl', function(TraitifyCreds, $scope, DataFactory, AuthFactory, TraitifyFactory) {
 	console.log("~ TraitifyCtrl Yay! ~");
 
 	let user = AuthFactory.getUser();
 
-	$scope.obj = {};
-
-
+	$scope.obj = {
+		assessmentid: "",
+		mood: "",
+		name: "",
+		private: false,
+		personality: "",
+		uid: ""
+	};
 
 	$scope.quiz = () => {
 		Traitify.setPublicKey(TraitifyCreds.publicKey);
@@ -30,7 +35,19 @@ app.controller('TraitifyCtrl', function(TraitifyCreds, $scope, DataFactory, Auth
 		});
 	};
 
-
+	$scope.newAssessment = () => {
+		TraitifyFactory.register()
+		.then((data) => {
+			console.log("assessmentid", data.data);
+			DataFactory.editUser(user, {assessmentid: data.data.id, personality: ""});
+			$scope.userObj.assessmentid = data.data.id;
+			$scope.userObj.personality = "*Take the Personality Quiz!*";
+			DataFactory.getUser(user)
+			.then(() => {
+				$scope.quiz();
+			});
+		});
+	};
 
 	$scope.save = () => {
 		let result = $(".personality-blend > .name")[0].innerHTML;
@@ -44,5 +61,5 @@ app.controller('TraitifyCtrl', function(TraitifyCreds, $scope, DataFactory, Auth
 	};
 
 
-	$scope.quiz();
+	//$scope.quiz();
 });

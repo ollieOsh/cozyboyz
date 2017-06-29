@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("EditProfileCtrl", function($scope, DataFactory, AuthFactory, TraitifyFactory) {
+app.controller("EditProfileCtrl", function($scope, DataFactory, AuthFactory) {
 	console.log("~ EditProfileCtrl Yay! ~");
 
 	let user = AuthFactory.getUser();
@@ -29,14 +29,4 @@ app.controller("EditProfileCtrl", function($scope, DataFactory, AuthFactory, Tra
 		DataFactory.editUser($scope.userObj.uid, $scope.userObj);
 	};
 
-	$scope.newAssessment = () => {
-		TraitifyFactory.register()
-		.then((data) => {
-			console.log(data);
-			DataFactory.editUser(user, {assessmentid: data.data.id, personality: ""});
-			$scope.userObj.assessmentid = data.data.id;
-			$scope.userObj.personality = "*Take the Personality Quiz!*";
-			DataFactory.getUser(user);
-		});
-	};
 });
