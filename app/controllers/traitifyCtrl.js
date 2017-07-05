@@ -47,6 +47,14 @@ app.controller('TraitifyCtrl', function(TraitifyCreds, $scope, DataFactory, Auth
 				$scope.quiz();
 			});
 		});
+
+		DataFactory.getUserMovies(user)
+		.then((results) => {
+			results.forEach(function(movie) {
+				console.log(movie.fb);
+				DataFactory.removeMovie(movie.fb);
+			});
+		});
 	};
 
 	$scope.save = () => {

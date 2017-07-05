@@ -15,8 +15,11 @@ app.controller("ProfileCtrl", function(AuthFactory, DataFactory, $scope, $locati
 		$scope.movies = movies;
 	});
 
-	// $scope.watchedIt = (watched) => {
-	// 	isWatched = watched;
-	// 	console.log(isWatched);
-	// };
+	$scope.edit = (movie, toEdit) => {
+		console.log("EDIT", toEdit, movie);
+		DataFactory.editMovie(movie, toEdit)
+		.then((it) => {
+			console.log("updated fb", it);
+		});
+	};
 });

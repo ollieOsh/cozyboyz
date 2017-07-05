@@ -19,11 +19,34 @@ app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory){
 		});
 	};
 
-	const addToWatched = () => {};
+	const editMovie = (movie, obj) => {
+		console.log("editing movie", movie, obj);
+		return $q((resolve, reject) => {
+			$http.patch(`${FBCreds.databaseURL}/movies/${movie}.json`, JSON.stringify(obj))
+			.then((newobj) => {
+				resolve(newobj.data);
+			})
+			.catch((error) => {
+				reject(error);
+			});
+		});
+	};
 
 	const rateMovie = () => {};
 
-	const removeMovie = () => {};
+	const removeMovie = (movie) => {
+		console.log("deleting movie", movie);
+		let movies = [];
+		return $q((resolve, reject) => {
+			$http.delete(`${FBCreds.databaseURL}/movies/${movie}.json`)
+			.then((userMovies) => {
+				resolve(movies);
+			})
+			.catch((error) => {
+				reject(error);
+			});
+		});
+	};
 
 	const addUser = (uid, userObj) => {
 		console.log("adding user to fb");
@@ -88,5 +111,5 @@ app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory){
 		});
 	};
 
-	return {addToWatchList, addToWatched, rateMovie, removeMovie, addUser, getUser, getUserMovies, editUser};
+	return {addToWatchList, editMovie, rateMovie, removeMovie, addUser, getUser, getUserMovies, editUser};
 });

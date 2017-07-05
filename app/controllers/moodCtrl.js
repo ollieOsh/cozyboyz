@@ -46,10 +46,12 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 	.then((userObj) => {
 		$scope.userObj = userObj.data;
 		console.log(userObj.data.personality);
-		if(userObj.data.personality === ""){
-			$scope.userObj.personality = "Take the Quiz!";
+		if(userObj.data.personality === ""| userObj.data.personality == "*Take the Personality Quiz!*"){
+			$scope.userObj.personality = "*Take the Personality Quiz!*";
 			$('.btn-danger').prop('disabled',true);
 		}
+
+		$scope.userObj.mood = "FANTASTIC";
 
 		let arr = [];
 

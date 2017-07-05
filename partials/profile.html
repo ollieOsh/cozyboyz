@@ -21,9 +21,9 @@
 		     			<button type="button" class="btn btn-default" ng-click="addToWatchlist($event)">Save</button>
 		     			<br>
 		     			<br>
-		     			<label><input type="checkbox" class="watched" ng-model="movie.watched" ng-change="watchedIt(movie.watched)"> Watched</label>
+		     			<label><input type="checkbox" class="watched" ng-model="movie.watched" ng-change="edit(movie.fb, {watched: movie.watched})"> Watched</label>
 		     			<br>
-		     			<label><input type="checkbox" class="watched" ng-model="movie.noShow" ng-change="show(noShow)"> Hide</label>
+		     			<label><input type="checkbox" class="watched" ng-model="movie.noShow" ng-change="edit(movie.fb, {noShow: movie.noShow})"> Hide</label>
 		     			<br>
 		     			<p class="movieDescription hidden">{{movie.overview}}</p>
 		     		</div>
@@ -44,9 +44,9 @@
 		     			<button type="button" class="btn btn-default" ng-click="addToWatchlist($event)">Save</button>
 		     			<br>
 		     			<br>
-		     			<label><input type="checkbox" class="watched" ng-model="movie.watched" ng-change="watchedIt(movie.watched)"> Watched</label>
+		     			<label><input type="checkbox" class="watched" ng-model="movie.watched" ng-change="edit(movie.fb, {watched: movie.watched})"> Watched</label>
 		     			<br>
-		     			<label><input type="checkbox" class="watched" ng-model="movie.noShow" ng-change="show(noShow)"> Hide</label>
+		     			<label><input type="checkbox" class="watched" ng-model="movie.noShow" ng-change="edit(movie.fb, {noShow: movie.noShow})"> Hide</label>
 		     			<br>
 		     			<p class="movieDescription hidden">{{movie.overview}}</p>
 		     		</div>
