@@ -12,7 +12,7 @@
 	<div class="watchlist">
 		<h4>Watchlist</h4>
 		<div class="row">
-	     	<div class="col-xs-3" ng-repeat="movie in movies | filter: {noShow: false, watched: false}">
+	     	<div class="col-xs-3" ng-repeat="movie in movies | filter: {noShow: false, watched: false} | filter: searching.search">
 	     		<div class="thumbnail" id="{{movie.fb}}">
 		     		<a href="" ng-controller="MoodCtrl" ng-click="more(movie.fb)"><img src="{{movie.poster_path}}"></a>
 		     		<div class="caption">
@@ -35,8 +35,8 @@
 	<div class="watched">
 		<h4>Watched</h4>
 		<div class="row">
-	     	<div class="col-xs-3" ng-repeat="movie in movies | filter: {noShow: false, watched: true}">
-	     		<div class="thumbnail" id="{{movie.fb}}">
+	     	<div class="col-xs-3" ng-repeat="movie in movies | filter: {noShow: false, watched: true} | filter: searching.search">
+	     		<div class="thumbnail {{movie.mood}}" id="{{movie.fb}}">
 		     		<a href="" ng-controller="MoodCtrl" ng-click="more(movie.fb)"><img src="{{movie.poster_path}}"></a>
 		     		<div class="caption">
 		     			<a href="" ng-controller="MoodCtrl" ng-click="more(movie.fb)"><h4 class="movieTitle">{{movie.title}}</h4></a>

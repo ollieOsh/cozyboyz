@@ -1,11 +1,12 @@
 "use strict";
 
-app.controller("ProfileCtrl", function(AuthFactory, DataFactory, $scope, $location) {
+app.controller("ProfileCtrl", function(AuthFactory, DataFactory, SearchTerm, $scope, $location) {
 	console.log("~ ProfileCtrl Yay! ~");
 
 	let user = AuthFactory.getUser();
 
 	$scope.movies = [];
+	$scope.searching = SearchTerm;
 
 	// let isWatched = false,
 	// 	noShow = false;

@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("NavCtrl", function ($scope, $location, DataFactory, AuthFactory, TraitifyFactory) {
+app.controller("NavCtrl", function ($scope, $location, DataFactory, AuthFactory, SearchTerm, TraitifyFactory) {
 	console.log("~ NavCtrl yay! ~");
 
 	$scope.userObj = {
@@ -13,6 +13,7 @@ app.controller("NavCtrl", function ($scope, $location, DataFactory, AuthFactory,
 	};
 
 	$scope.isLoggedIn = false;
+	$scope.searching = SearchTerm;
 
 	firebase.auth().onAuthStateChanged((user) => {
 		if(user) {
