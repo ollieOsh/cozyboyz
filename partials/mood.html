@@ -1,10 +1,12 @@
 <br>
+<br>
 <div class="container">
-	<form id="currentMood">
+	<form id="currentMood" class="row">
 		<h3>What Kinda Mood Are You In, {{userObj.name}}?</h3>
+		<h4>Movie Personality: <a ng-href="#!/{{userObj.name}}/edit"  id="personality">{{userObj.personality}}</a></h4>
 		<p>*Leave any/everything blank if you want 😊</p>
 
-		<div class="form-group">
+		<div class="form-group moody col-xs-2">
 			<h4>Pick an 'appy'</h4>
 			<div class="radio">
 				<label><input type="radio" name="appy" ng-model="appy" value="happy">Happy</label>
@@ -23,94 +25,107 @@
 			</div>
 		</div>
 
-		<div class="form-group">
-			<h4>How You Feelin?</h4>
-			<div class="radio">
-				<label><input class="emoji" type="radio" ng-model="feely" name="moji" value="ded">&#9760;</label>
+		<div class="form-group moody col-xs-2">
+			<h4>I Feel Like...</h4>
+			<div class="row">
+				<div class="radio col-xs-6 first">
+					<label><input class="emoji" type="radio" ng-model="feely" name="moji" value="ded">&#9760;</label>
+				</div>
+				<div class="radio col-xs-6">
+					<label><input class="emoji" type="radio" ng-model="feely" name="moji" value="smiley">😁</label>
+				</div>
 			</div>
-			<div class="radio">
-				<label><input class="emoji" type="radio" ng-model="feely" name="moji" value="smiley">😁</label>
+			<div class="row">
+				<div class="radio col-xs-6">
+					<label><input class="emoji" type="radio" ng-model="feely" name="moji" value="cheeky">😏</label>
+				</div>
+				<div class="radio col-xs-6">
+					<label><input class="emoji" type="radio" ng-model="feely" name="moji" value="devily">😈</label>
+				</div>
 			</div>
-			<div class="radio">
-				<label><input class="emoji" type="radio" ng-model="feely" name="moji" value="cheeky">😏</label>
+			<div class="row">
+				<div class="radio col-xs-6">
+					<label><input class="emoji" type="radio" ng-model="feely" name="moji" value="fucky">😑</label>
+				</div>
+				<div class="radio col-xs-6">
+					<label><input class="emoji" type="radio" ng-model="feely" name="moji" value="nerdy">😝</label>
+				</div>
 			</div>
-			<div class="radio">
-				<label><input class="emoji" type="radio" ng-model="feely" name="moji" value="devily">😈</label>
-			</div>
-			<div class="radio">
-				<label><input class="emoji" type="radio" ng-model="feely" name="moji" value="fucky">😑</label>
-			</div>
-			<div class="radio">
-				<label><input class="emoji" type="radio" ng-model="feely" name="moji" value="nerdy">🤓</label>
-			</div>
-			<div class="radio">
-				<label><input class="emoji" type="radio" ng-model="feely" name="moji" value="nerdy">😝</label>
+			<div class="row">
+				<div class="radio col-xs-6">
+					<label><input class="emoji" type="radio" ng-model="wanna" name="moji" value="sad">😢</label>
+				</div>
+				<div class="radio col-xs-6">
+					<label><input class="emoji" type="radio" ng-model="feely" name="moji" value="nerdy">🤓</label>
+				</div>
 			</div>
 			<p>{{feely}}</p>
 		</div>
 
-		<div class="form-group">
-			<h4>How You Wanna Feel?</h4>
-			<div class="radio">
-				<label><input class="emoji" type="radio" ng-model="wanna" name="moji" value="wowed">😲</label>
+		<div class="form-group moody col-xs-2">
+			<div class="row">
+			<h4 class="col-xs-12">Make Me Feel?</h4>
 			</div>
-			<div class="radio">
-				<label><input class="emoji" type="radio" ng-model="wanna" name="moji" value="wondering">🤔</label>
+			<div class="row">
+				<div class="radio col-xs-6 first">
+					<label><input class="emoji" type="radio" ng-model="wanna" name="moji" value="wowed">😲</label>
+				</div>
+				<div class="radio col-xs-6">
+					<label><input class="emoji" type="radio" ng-model="wanna" name="moji" value="wondering">🤔</label>
+				</div>
 			</div>
-			<div class="radio">
-				<label><input class="emoji" type="radio" ng-model="wanna" name="moji" value="warm">🤗</label>
+			<div class="row">
+				<div class="radio col-xs-6 first">
+					<label><input class="emoji" type="radio" ng-model="wanna" name="moji" value="warm">🤗</label>
+				</div>
+				<div class="radio col-xs-6">
+					<label><input class="emoji" type="radio" ng-model="wanna" name="moji" value="lovey">😍</label>
+				</div>
 			</div>
-			<div class="radio">
-				<label><input class="emoji" type="radio" ng-model="wanna" name="moji" value="lovey">😍</label>
+			<div class="row">
+				<div class="radio col-xs-6 first">
+					<label><input class="emoji" type="radio" ng-model="wanna" name="moji" value="devily">😈</label>
+				</div>
+				<div class="radio col-xs-6">
+					<label><input class="emoji" type="radio" ng-model="wanna" name="moji" value="sad">😢</label>
+				</div>
 			</div>
-			<div class="radio">
-				<label><input class="emoji" type="radio" ng-model="wanna" name="moji" value="devily">😈</label>
-			</div>
-			<div class="radio">
-				<label><input class="emoji" type="radio" ng-model="wanna" name="moji" value="sad">😢</label>
-			</div>
-			<div class="radio">
-				<label><input class="emoji" type="radio" ng-model="wanna" name="moji" value="sad">😢</label>
-			</div>
-			<p>{{wanna}}</p>
-		</div>
-
-		<div class="form-group">
-			<h4>I Kinda Want Some...</h4>
-			<div class="add">
-				<label><input class="emoji" type="checkbox" name="wanna" value="37" ng-model="cowboy" ng-change="addGenre(cowboy, '37')"> 🤠</label>
-			</div>
-			<div class="add">
-				<label><input class="emoji" type="checkbox" name="wanna" value="878" ng-model="alien" ng-change="addGenre(alien, '878')"> 👽</label>
-			</div>
-			<div class="add">
-				<label><input class="emoji" type="checkbox" name="wanna" value="28" ng-model="punch" ng-change="addGenre(punch, '28')"> 👊</label>
-			</div>
-			<div class="add">
-				<label><input class="emoji" type="checkbox" name="wanna" value="10402" id="music" ng-model="music" ng-change="addGenre(music, '10402')"> 🎶</label>
+			<div class="row">
+				<div class="radio col-xs-6 first">
+					<label><input class="emoji" type="radio" ng-model="feely" name="moji" value="nerdy">🤓</label>
+				</div>
+				<div class="radio col-xs-6">
+					<label><input class="emoji" type="radio" ng-model="feely" name="moji" value="nerdy">🤓</label>
+				</div>
+				<!-- <p>{{wanna}}</p> -->
 			</div>
 		</div>
 
-		<div class="form-group">
-			<h4>Animated?</h4>
-			<div class="radio">
-				<label><input type="radio" name="toons" value="yes">Yes</label>
+		<div class="form-group moody col-xs-2">
+			<h4>I Kinda Wanna See...</h4>
+			<div class="add">
+				<label><input class="emoji" type="checkbox" name="wanna" value="37" ng-model="cowboy" ng-change="western(cowboy)"> 🤠</label>
 			</div>
-			<div class="radio">
-				<label><input type="radio" name="toons" value="no">No</label>
-			</div>
-			<div class="radio">
-				<label><input type="radio" name="toons" value="shrug">Don't Care</label>
-			</div>
-		</div>
 
-		<div class="form-group">
-			<div class="checkbox">
-				<label><input type="checkbox" ng-model="safe" id="fam" ng-change="safeSearch(safe)"><strong>Family-Friendly</strong></label>
+			<div class="add">
+				<label><input class="emoji" type="checkbox" name="wanna" value="878" ng-model="grey" ng-change="alien(grey)"> 👽</label>
+			</div>
+
+			<div class="add">
+				<label><input class="emoji" type="checkbox" name="wanna" value="10402" id="music" ng-model="tune" ng-change="music(tune)"> 🎶 </label>
+			</div>
+
+			<div class="add">
+				<label><input type="checkbox" name="wanna" value="16" id="toons" ng-model="anime" ng-change="toons(anime)"> Cartoons </label>
+			</div>
+
+			<div class="add">
+				<label><input type="checkbox" ng-model="safe" id="fam" ng-change="safeSearch(safe)"> Family-Friendly</label>
 			</div>
 		</div>
 	</form>
-	<button class="btn" data-toggle="modal" data-target="#recs" ng-click="getRecs()">View Recs</button>
+	<button class="btn btn-danger" data-toggle="modal" data-target="#recs" ng-click="getRecs()">View Recs</button>
+	<a ng-href="#!/{{userObj.name}}"><button class="btn btn-primary">View Watchlist</button>
 </div>
 
 <!-- Modal -->
@@ -122,17 +137,19 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="chingy">Picks </h4>
         <div class="wants">
-			<label><input class="emoji" type="checkbox" name="wanna" value="37" ng-model="cowboy" ng-change="addGenre(cowboy, '37')"> 🤠</label>
+			<label><input class="emoji" type="checkbox" name="wanna" value="37" ng-model="cowboy" ng-change="western(cowboy)"> 🤠</label>
 
-			<label><input class="emoji" type="checkbox" name="wanna" value="878" ng-model="alien" ng-change="addGenre(alien, '878')"> 👽</label>
+			<label><input class="emoji" type="checkbox" name="wanna" value="878" ng-model="grey" ng-change="alien(grey)"> 👽</label>
 
-			<label><input class="emoji" type="checkbox" name="wanna" value="28" ng-model="punch" ng-change="addGenre(punch, '28')"> 👊</label>
+			<label><input class="emoji" type="checkbox" name="wanna" value="10402" id="music" ng-model="tune" ng-change="music(tune)"> 🎶 </label>
 
-			<label><input class="emoji" type="checkbox" name="wanna" value="10402" id="music" ng-model="music" ng-change="addGenre(music, '10402')"> 🎶 </label>
+			<label><input type="checkbox" name="wanna" value="16" id="toons" ng-model="anime" ng-change="toons(anime)"> Cartoons </label>
+
+			<label><input type="checkbox" ng-model="safe" id="fam" ng-change="safeSearch(safe)"><strong>Family-Friendly</strong></label>
       </div>
 
       <div class="modal-body">
-      	<div class="row">
+      	<div class="row recommendations">
 	     	<div class="col-xs-3" ng-repeat="movie in movies | limitTo: 4">
 	     		<div class="thumbnail" id="{{movie.id}}">
 		     		<a href="" ng-click="more(movie.id)"><img src="{{movie.poster_path}}"></a>
@@ -150,6 +167,10 @@
 		     	</div>
 	     	</div>
 	      </div>
+	    </div>
+
+	    <div class="container" id="noMatch">
+	    	<!-- <h3>Oops, looks like we couldn't find anything to match!<h3> -->
 	    </div>
 
       <div class="modal-footer">

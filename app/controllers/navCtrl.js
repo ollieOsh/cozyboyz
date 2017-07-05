@@ -38,10 +38,10 @@ app.controller("NavCtrl", function ($scope, $location, DataFactory, AuthFactory,
 					TraitifyFactory.register()
 					.then((data) => {
 						$scope.userObj.assessmentid = data.data.id;
-					});
-					DataFactory.addUser(user.uid, $scope.userObj)
-					.then(() =>{
-						$location.path($scope.userObj.name + '/edit');
+						DataFactory.addUser(user.uid, $scope.userObj)
+						.then(() =>{
+							$location.path($scope.userObj.name + '/edit');
+						});
 					});
 				}
 			});

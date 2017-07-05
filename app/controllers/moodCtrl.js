@@ -28,11 +28,17 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 			nappy: 5
 		},
 		withGenre = "",
+		wG = "",
 		withoutGenre = "",
+		woG = "",
 		indie = false,
 		isWatched = false,
 		noShow = false,
-		safe = false,
+		fam = "",
+		cowboy = "",
+		musical = "",
+		martian = "",
+		anime = "",
 		currentMood = "",
 		wanna = "";
 
@@ -40,6 +46,10 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 	.then((userObj) => {
 		$scope.userObj = userObj.data;
 		console.log(userObj.data.personality);
+		if(userObj.data.personality === ""){
+			$scope.userObj.personality = "Take the Quiz!";
+			$('.btn-danger').prop('disabled',true);
+		}
 
 		let arr = [];
 
@@ -56,7 +66,7 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 			arr[i] = arr[i].replace(" ", "");
 			for(var prop in personality) {
 				if(prop == arr[i]) {
-					withGenre += personality[prop] + ',';
+					wG += personality[prop] + ',';
 					console.log(prop, personality[prop]);
 				}
 			}
@@ -71,8 +81,45 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 	$scope.safeSearch = (safe) => {
 		console.log("safeSearch", safe);
 		if(safe) {
-			withGenre += "10751";
-			console.log(withGenre);
+			fam = "10751,";
+		}else {
+			fam = "";
+		}
+	};
+
+	$scope.western = (yeehaw) => {
+		console.log("western", yeehaw);
+		if(yeehaw) {
+			cowboy = "37,";
+		}else {
+			cowboy = "";
+		}
+	};
+
+	$scope.music = (tune) => {
+		console.log("musical", tune);
+		if(tune) {
+			musical = "10402,";
+		}else {
+			musical = "";
+		}
+	};
+
+	$scope.alien = (grey) => {
+		console.log("martian", grey);
+		if(grey) {
+			martian = "878,";
+		}else {
+			martian = "";
+		}
+	};
+
+	$scope.toons = (toon) => {
+		console.log("anime", toon);
+		if(toon) {
+			anime = "16,";
+		}else {
+			anime = "";
 		}
 	};
 
@@ -106,8 +153,9 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 		if(indie) {
 			indie = "&vote_count.lte=2500&vote_average.gte=7";
 		}
-		console.log(currentMood, wanna);
-		MDBFactory.getMovies(withGenre, withoutGenre, indie)
+		withGenre += fam + musical + anime + cowboy + martian;
+		console.log("withGenre", wG + withGenre);
+		MDBFactory.getMovies(wG + withGenre, woG + withoutGenre, indie)
 		.then((movieObj) => {
 			console.log(movieObj);
 			for(let i = 0; i < movieObj.results.length; i++) {
@@ -131,8 +179,17 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 						}
 					}
 				}
+				console.log("LENGTH", $scope.movies.length);
+				if($scope.movies.length === 0){
+					console.log("booty");
+					$('#noMatch').html(`<h3>Oops, looks like we couldn't find anything to match!<h3>`);
+				}else {
+					$('#noMatch').html("");
+				}
 			});
 		});
+		withGenre = "";
+		withoutGenre = "";
 	};
 
 	$scope.more = (movieID) => {

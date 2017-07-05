@@ -4,7 +4,8 @@
 	<div>
 		<h2 ng-controller="MoodCtrl">Wagwan, {{userObj.name}}!</h2>
 		<h3 ng-controller="EditProfileCtrl">Movie Personality: {{userObj.personality}}</h3>
-		<a  ng-controller="MoodCtrl" ng-href="#!/{{userObj.name}}/edit"><button type="button" class="btn btn-primary">Edit Profile</button></a>
+		<a  ng-controller="MoodCtrl" ng-href="#!/{{userObj.name}}/edit"><button type="button" class="btn btn-default">Edit Profile</button></a>
+		<a ng-controller="MoodCtrl" ng-href="#!/{{userObj.name}}/mood"><button class="btn btn-primary">Get More Movies!</button></a>
 	</div>
 	<br>
 	<hr>

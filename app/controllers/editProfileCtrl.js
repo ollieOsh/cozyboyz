@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("EditProfileCtrl", function($scope, DataFactory, AuthFactory) {
+app.controller("EditProfileCtrl", function($scope, DataFactory, AuthFactory, $location) {
 	console.log("~ EditProfileCtrl Yay! ~");
 
 	let user = AuthFactory.getUser();
@@ -26,7 +26,10 @@ app.controller("EditProfileCtrl", function($scope, DataFactory, AuthFactory) {
 
 	$scope.editUser = () => {
 		console.log("changes", $scope.userObj);
-		DataFactory.editUser($scope.userObj.uid, $scope.userObj);
+		DataFactory.editUser($scope.userObj.uid, $scope.userObj)
+		.then(() => {
+			$location.path(`${$scope.userObj.name}`);
+		});
 	};
 
 });

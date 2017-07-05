@@ -29,17 +29,17 @@ app.config(($routeProvider) => {
 	.when('/:profile', {
 		templateUrl: 'partials/profile.html',
 		controller: "ProfileCtrl",
-		resolve: {isAuth}
+		//resolve: {isAuth}
 	})
 	.when('/:profile/mood', {
 		templateUrl: 'partials/mood.html',
 		controller: "MoodCtrl",
-		resolve: {isAuth}
+		//resolve: {isAuth}
 	})
 	.when('/:profile/edit', {
 		templateUrl: 'partials/profile-edit.html',
 		controller: "EditProfileCtrl",
-		resolve: {isAuth}
+		//resolve: {isAuth}
 	})
 	.otherwise('/');
 });
