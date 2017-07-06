@@ -6,6 +6,10 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 	$scope.userObj = {};
 	$scope.movies = [];
 	//$scope.username = $routeParams.profile;
+	$scope.wanna = "";
+	$scope.feely = "";
+	$scope.appy = "";
+	$scope.currentMood = "Neutral";
 
 	let user = AuthFactory.getUser(),
 		personality = {
@@ -20,13 +24,6 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 			"Romantic": "10749",
 			"​StuntDouble": "28"
 		},
-		appy = {
-			happy: 1,
-			crappy: 2,
-			sappy: 3,
-			fappy: 4,
-			nappy: 5
-		},
 		withGenre = "",
 		wG = "",
 		withoutGenre = "",
@@ -38,9 +35,7 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 		cowboy = "",
 		musical = "",
 		martian = "",
-		anime = "",
-		currentMood = "",
-		wanna = "";
+		anime = "";
 
 	DataFactory.getUser(user)
 	.then((userObj) => {
@@ -50,8 +45,6 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 			$scope.userObj.personality = "*Take the Personality Quiz!*";
 			$('.btn-danger').prop('disabled',true);
 		}
-
-		$scope.userObj.mood = "FANTASTIC";
 
 		let arr = [];
 
@@ -135,25 +128,50 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 		console.log(noShow);
 	};
 
-	// $scope.addGenre = (genreID, val) => {
-	// 		if(genreID){
-	// 			console.log(genreID, val);
-	// 			if(withGenre.indexOf(val) > -1){
-	// 				withGenre += val + ',';
-	// 			}
-
-	// 		}else{
-	// 			wG = '';
-	// 		}
-	// 		console.log(wG);
-	// };
-
 	$scope.getRecs = () => {
 		$scope.movies = [];
-		currentMood = $("input[name='appy']:checked").val();
-		wanna = $("input[name='wanna']:checked").val();
+		switch($scope.appy){
+			case "happy":
+				$scope.currentMood = "Giddy";
+				withGenre = "35,";
+				withoutGenre = "";
+				break;
+			case "crappy":
+				$scope.currentMood = "Cranky";
+				withGenre = "12,";
+				withoutGenre = "36,99";
+				break;
+			case "sappy":
+				$scope.currentMood = "Sappy";
+				withGenre = "10749,";
+				withoutGenre = "";
+				break;
+			case "fappy":
+				$scope.currentMood = "Intense";
+				withGenre = "28,53,";
+				withoutGenre = "";
+				break;
+			case "nappy":
+				$scope.currentMood = "Mellow";
+				withGenre = "";
+				withoutGenre = "9648,12,";
+		}
+
+		switch($scope.feely){
+			case "sad":
+				$scope.currentMood = "Sad";
+				withGenre = "";
+				withoutGenre = "12,80";
+		}
+
+		$scope.userObj.mood = $scope.currentMood;
+
+		console.log("HELLO", $scope.appy, $scope.feely, $scope.wanna, $scope.currentMood);
 		if(indie) {
 			indie = "&vote_count.lte=2500&vote_average.gte=7";
+		}
+		if(withoutGenre !== ""){
+			woG = "&without_genres=";
 		}
 		withGenre += fam + musical + anime + cowboy + martian;
 		console.log("withGenre", wG + withGenre);
@@ -194,6 +212,13 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 		withoutGenre = "";
 	};
 
+	$scope.reset = () => {
+		$scope.appy = "";
+		$scope.feely = "";
+		$scope.wanna = "";
+		$scope.currentMood = "Neutral";
+	};
+
 	$scope.more = (movieID) => {
 		movieID = '#' + movieID;
 		let show = movieID + ' > .caption > p';
@@ -209,7 +234,7 @@ app.controller("MoodCtrl", function(MDBCreds, MDBFactory, AuthFactory, DataFacto
 			id: event.currentTarget.offsetParent.firstElementChild.id,
 			uid: user,
 			overview: event.target.parentElement.lastElementChild.innerHTML,
-			mood: "",
+			mood: $scope.currentMood,
 			watched: isWatched,
 			noShow: noShow,
 			rating: 0
