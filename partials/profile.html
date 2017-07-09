@@ -1,0 +1,65 @@
+<br>
+<br>
+<div class="container">
+	<div>
+		<h2 ng-controller="MoodCtrl">Wagwan, {{userObj.name}}!</h2>
+		<h3 ng-controller="EditProfileCtrl">Movie Personality: {{userObj.personality}}</h3>
+		<a  ng-controller="MoodCtrl" ng-href="#!/{{userObj.name}}/edit"><button type="button" class="btn btn-default">Edit Profile</button></a>
+		<a ng-controller="MoodCtrl" ng-href="#!/{{userObj.name}}/mood"><button class="btn btn-primary">Get More Movies!</button></a>
+	</div>
+	<div>
+		<h5 class="Intense">Intense</h5>
+		<h5 class="Sappy">Sappy</h5>
+		<h5 class="Giddy">Giddy</h5>
+		<h5 class="Mellow">Mellow</h5>
+		<h5 class="Sad">Sad</h5>
+		<h5 class="Cranky">Cranky</h5>
+	</div>
+	<br>
+	<hr>
+	<div class="watchlist">
+		<h4>Watchlist</h4>
+		<div class="row">
+	     	<div class="col-xs-3" ng-repeat="movie in movies | filter: {noShow: false, watched: false} | filter: searching.search">
+	     		<div class="thumbnail {{movie.mood}}" id="{{movie.fb}}">
+		     		<a href="" ng-controller="MoodCtrl" ng-click="more(movie.fb)"><img src="{{movie.poster_path}}"></a>
+		     		<div class="caption">
+		     			<a href="" ng-controller="MoodCtrl" ng-click="more(movie.fb)"><h4 class="movieTitle">{{movie.title}}</h4></a>
+		     			<a  href="https://www.netflix.com/search?q={{movie.title}}" target="_blank"><button type="button" class="btn btn-primary">Watch Now</button></a>
+		     			<button type="button" class="btn btn-default" ng-click="addToWatchlist($event)">Save</button>
+		     			<br>
+		     			<br>
+		     			<label><input type="checkbox" class="watched" ng-model="movie.watched" ng-change="edit(movie.fb, {watched: movie.watched})"> Watched</label>
+		     			<br>
+		     			<label><input type="checkbox" class="watched" ng-model="movie.noShow" ng-change="edit(movie.fb, {noShow: movie.noShow})"> Hide</label>
+		     			<br>
+		     			<p class="movieDescription hidden">{{movie.overview}}</p>
+		     		</div>
+		     	</div>
+	     	</div>
+	    </div>
+	</div>
+	<hr>
+	<div class="watched">
+		<h4>Watched</h4>
+		<div class="row">
+	     	<div class="col-xs-3" ng-repeat="movie in movies | filter: {noShow: false, watched: true} | filter: searching.search">
+	     		<div class="thumbnail {{movie.mood}}" id="{{movie.fb}}">
+		     		<a href="" ng-controller="MoodCtrl" ng-click="more(movie.fb)"><img src="{{movie.poster_path}}"></a>
+		     		<div class="caption">
+		     			<a href="" ng-controller="MoodCtrl" ng-click="more(movie.fb)"><h4 class="movieTitle">{{movie.title}}</h4></a>
+		     			<a  href="https://www.netflix.com/search?q={{movie.title}}" target="_blank"><button type="button" class="btn btn-primary">Watch Now</button></a>
+		     			<button type="button" class="btn btn-default" ng-click="addToWatchlist($event)">Save</button>
+		     			<br>
+		     			<br>
+		     			<label><input type="checkbox" class="watched" ng-model="movie.watched" ng-change="edit(movie.fb, {watched: movie.watched})"> Watched</label>
+		     			<br>
+		     			<label><input type="checkbox" class="watched" ng-model="movie.noShow" ng-change="edit(movie.fb, {noShow: movie.noShow})"> Hide</label>
+		     			<br>
+		     			<p class="movieDescription hidden">{{movie.overview}}</p>
+		     		</div>
+		     	</div>
+	     	</div>
+	    </div>
+	</div>
+</div>

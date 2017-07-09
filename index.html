@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" href="./lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
+   	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+	<div ng-app="2cozy">
+		<div ng-include="'partials/navbar.html'"></div>
+
+		<!-- ID on this div to position below fixed-nav and adjust as needed -->
+		<div ng-view id="main-content">
+<!-- anything in the routes in app.js will be shown with ng view -->
+		</div>
+		<!-- <div ng-include="'partials/footer.html'"></div> -->
+
+	</div>
+
+<script type="text/javascript" src="./lib/node_modules/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="./lib/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="./lib/node_modules/angular/angular.min.js"></script>
+<script type="text/javascript" src="./lib/node_modules/angular-route/angular-route.min.js"></script>
+<script type="text/javascript" src="./lib/node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+<script type="text/javascript" src="./lib/node_modules/firebase/firebase.js"></script>
+<script src="https://cdn.traitify.com/js/widgets/v1.js"></script>
+
+<script type="text/javascript" src="./app/app.js"></script>
+
+<!-- Values -->
+<script type="text/javascript" src="app/values/fb-creds.js"></script>
+<script type="text/javascript" src="app/values/traitify.js"></script>
+<script type="text/javascript" src="app/values/mdb.js"></script>
+
+<!-- Factories -->
+<script type="text/javascript" src="./app/factories/authFactory.js"></script>
+<script type="text/javascript" src="./app/factories/dataFactory.js"></script>
+<script type="text/javascript" src="./app/factories/mdbFactory.js"></script>
+<script type="text/javascript" src="./app/factories/traitifyFactory.js"></script>
+<script type="text/javascript" src="./app/factories/searchFactory.js"></script>
+
+<!-- Controllers -->
+<script type="text/javascript" src="./app/controllers/navCtrl.js"></script>
+<script type="text/javascript" src="./app/controllers/authCtrl.js"></script>
+<script type="text/javascript" src="./app/controllers/profileCtrl.js"></script>
+<script type="text/javascript" src="./app/controllers/editProfileCtrl.js"></script>
+<script type="text/javascript" src="./app/controllers/traitifyCtrl.js"></script>
+<script type="text/javascript" src="./app/controllers/moodCtrl.js"></script>
+
+</body>
+</html>
