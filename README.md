@@ -54,14 +54,14 @@ cd app/values
 
 ## Run the app
 
-*Run grunt
-    *From the main directory: 
+* Run grunt
+    * From the main directory: 
     ```
     cd lib
     grunt
     ```
-*Start your local server
-    *In a duplicate terminal window cd back into the main directory: 
+* Start your local server
+    * In a duplicate terminal window cd back into the main directory: 
     ```
     cd ..
     hs
@@ -69,7 +69,7 @@ cd app/values
 
 ## Other Technologies Used
 
-*AngularJS
-*Bootstrap
-*JQuery
-*Sass
+* AngularJS
+* Bootstrap
+* JQuery
+* Sass
