@@ -37,9 +37,9 @@ cd app/values
     ```
     app.constant("MDBCreds", {
     apiKey: {YOUR_KEY},
-    searchURL: "https://api.themoviedb.org/3/discover/movie?api_key=10bb82290966de06bc93fb7297494c27&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&with_original_language=en&with_genres=",
+    searchURL: "https://api.themoviedb.org/3/discover/movie?api_key={YOUR_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&with_original_language=en&with_genres=",
     creditURL: "https://api.themoviedb.org/3/movie/",
-    endCreditURL: "/credits?api_key=10bb82290966de06bc93fb7297494c27",
+    endCreditURL: "/credits?api_key={YOUR_KEY}",
     posterURL: "https://image.tmdb.org/t/p/w500"
     });
     ```
